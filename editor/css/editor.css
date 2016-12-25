@@ -13,6 +13,11 @@ h1 {
   color: #c00;
 }
 
+@font-face {
+  font-family: "Antonio";
+  src: url('https://interaktivni.rozhlas.cz/tools/Antonio.ttf') format('truetype');
+}
+
 /* Buttons/controls */
 button,
 .button {

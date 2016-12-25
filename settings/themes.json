@@ -38,6 +38,33 @@
     "waveBottom": 660,
     "waveTop": 320
   },
+  "Caslavska": {
+    "captionAlign": "right",
+    "captionTop": 60,
+    "captionRight": 1220,
+    "captionLeft": 640,
+    "backgroundImage": "krpalek.jpg",
+    "foregroundColor": "#ed2e38",
+    "waveColor": "#ed2e38",
+    "captionColor": "#fff",
+    "waveBottom": 660,
+    "waveTop": 320
+  },
+
+  "Generation What": {
+    "captionAlign": "right",
+    "captionTop": 60,
+    "captionRight": 1220,
+    "captionLeft": 640,
+    "backgroundImage": "gw_audiogram_2.jpg",
+    "foregroundColor": "#fff",
+    "captionFont": "300 52px 'Antonio'",
+    "waveColor": "#e44747",
+    "captionColor": "#e44747",
+    "waveBottom": 660,
+    "waveTop": 320
+  },
+
   "Bars": {
     "pattern": "bars",
     "foregroundColor": "#d84a4a"
@@ -50,16 +77,6 @@
     "captionRight": 640,
     "captionBottom": 660,
     "captionTop": null
-  },
-  "Line": {
-    "backgroundColor": "#edc951",
-    "foregroundColor": "#00a0b0",
-    "pattern": "line"
-  },
-  "Curve": {
-    "backgroundColor": "#00a0b0",
-    "foregroundColor": "#edc951",
-    "pattern": "curve"
   },
   "Bricks": {
     "backgroundColor": "#8771aa",
