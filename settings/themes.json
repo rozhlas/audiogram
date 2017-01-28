@@ -34,6 +34,9 @@
     "captionRight": 1220,
     "captionLeft": 640,
     "backgroundImage": "subway.jpg",
+    "watermarkImage": "brno.png",
+    "watermarkLeft": 20,
+    "watermarkTop":40,
     "foregroundColor": "#fc0",
     "waveBottom": 660,
     "waveTop": 320
