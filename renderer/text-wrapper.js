@@ -19,38 +19,53 @@ module.exports = function(theme) {
     if (!caption) {
       return;
     }
-
-    var lines = [[]],
-        maxWidth = 0,
-        words = smartquotes(caption + "").trim().replace(/\s\s+/g, " \n").split(/ /g);
-
-    context.font = theme.captionFont;
+    var totalHeight = 0;
+    var captionParts = caption.split(/\s\s\s/);
+    var lines = [];
+    var hasHeading = captionParts.length > 1;
     context.textBaseline = "top";
     context.textAlign = theme.captionAlign || "center";
+    captionParts.forEach(function(headingOrContent, captionPartIndex) {
 
-    // Check whether each word exceeds the width limit
-    // Wrap onto next line as needed
-    words.forEach(function(word,i){
-
-      var width = context.measureText(lines[lines.length - 1].concat([word]).join(" ")).width;
-
-      if (word[0] === "\n" || (lines[lines.length - 1].length && width > captionWidth)) {
-
-        word = word.trim();
-        lines.push([word]);
-        width = context.measureText(word).width;
-
-      } else {
-
-        lines[lines.length - 1].push(word);
-
+      var words = smartquotes(headingOrContent + "").trim().replace(/\s\s+/g, " \n").split(/ /g);
+      var isHeading = hasHeading && captionPartIndex === 0;
+      var stylePrefix = hasHeading
+        ? isHeading ? "captionHeading" : "captionUnderHeading"
+        : "caption";
+      var lineStyle = {
+        font: theme[stylePrefix + "Font"],
+        lineHeight: theme[stylePrefix + "LineHeight"],
+        lineSpacing: theme[stylePrefix + "LineSpacing"]
       }
+      var newLine = [];
+      newLine.style = lineStyle;
+      newLine.y = totalHeight;
+      lines.push(newLine);
 
-      maxWidth = Math.max(maxWidth,width);
+      context.font = lineStyle.font;
 
+      // Check whether each word exceeds the width limit
+      // Wrap onto next line as needed
+      words.forEach(function(word,i){
+        var width = context.measureText(lines[lines.length - 1].concat([word]).join(" ")).width;
+
+        if (word[0] === "\n" || (lines[lines.length - 1].length && width > captionWidth)) {
+          word = word.trim();
+          totalHeight += lineStyle.lineHeight;
+          lines.push([word]);
+          lines[lines.length - 1].style = lineStyle;
+          lines[lines.length - 1].y = totalHeight;
+          width = context.measureText(word).width;
+        } else {
+          lines[lines.length - 1].push(word);
+        }
+      });
+
+      totalHeight += lineStyle.lineHeight;
+      if(isHeading) {
+        totalHeight += theme.captionHeadingMarginBottom;
+      }
     });
-
-    var totalHeight = lines.length * theme.captionLineHeight + (lines.length - 1) * theme.captionLineSpacing;
 
     // horizontal alignment
     var x = theme.captionAlign === "left" ? left : theme.captionAlign === "right" ? right : (left + right) / 2;
@@ -71,7 +86,8 @@ module.exports = function(theme) {
 
     context.fillStyle = theme.captionColor;
     lines.forEach(function(line, i){
-      context.fillText(line.join(" "), x, y + i * (theme.captionLineHeight + theme.captionLineSpacing));
+      context.font = line.style.font;
+      context.fillText(line.join(" "), x, y + line.y);
     });
 
  };
