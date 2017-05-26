@@ -119,12 +119,12 @@
     "waveTop": 462,
     "pattern": "bricks"
   },
-  "Zprávy, světlé pozadí": {
+  "iROZHLAS.cz, světlé pozadí": {
     "captionAlign": "left",
     "captionTop": 150,
     "captionRight": 1216,
     "captionLeft": 64,
-    "watermarkImage": "zpravy.png",
+    "watermarkImage": "irozhlas.png",
     "watermarkLeft": 62,
     "watermarkTop": 62,
     "foregroundColor": "#ed2d38",
@@ -132,12 +132,12 @@
     "backgroundColor": "#efeef3",
     "waveTop": 350
   },
-  "Zprávy, tmavé pozadí": {
+  "iROZHLAS.cz, tmavé pozadí": {
     "captionAlign": "left",
     "captionTop": 150,
     "captionRight": 1216,
     "captionLeft": 64,
-    "watermarkImage": "zpravy-i.png",
+    "watermarkImage": "irozhlas-i.png",
     "watermarkLeft": 62,
     "watermarkTop": 62,
     "foregroundColor": "#fff",
